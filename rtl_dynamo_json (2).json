@@ -1,0 +1,47 @@
+{
+  "id": "com.custom.rtlTable",
+  "name": "RTL Table",
+  "version": "1.0.0",
+  "description": "A simple table widget with right-to-left direction for Hebrew",
+  "newInstancePrefix": "rtlTable",
+  "vendor": "custom",
+  "eula": "",
+  "license": "MIT",
+  "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAA3NCSVQICAjb4U/gAAAAQlBMVEX///9GRkZycnKZmZmOjpE6Ojo8Ojx9fX1MSktRT1AtKitdXF1ra2vJyMk+PD6tra+rqqtUUlU0MTNqaGpjY2NhYGEwvmGMAAAAAXRSTlMAQObYZgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAG5JREFUGNM9z8sRgCAMRdFHQIuQBIQi/fdpgB99Z+bOzQeg6gZEMcBPJ0d1Kmg6ZnFGRZcLESnR7tpoouuVSCPPZYHWee+XxTsrvQeYQrwV97tL5uZigMeoqucTUSnWEVBX4fWaW2BYz1W3bXsLDPldcD8MoYZ3glmMjNbGLJk5igDgnLTGHazdAPo1Gdms2bZXhRmbMuNR5rNWJuX075sMYg57jV94IQ2Xqt1atQAAAABJRU5ErkJggg==",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "rtl-table-widget",
+      "url": "https://raw.githubusercontent.com/SAP-Custom-Widget/dynamoTable/main/rtlTable.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {
+    "tableTitle": {
+      "description": "Table Title",
+      "type": "string",
+      "default": "טבלה בעברית"
+    },
+    "showBorders": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "methods": {
+    "setTableData": {
+      "description": "Sets the table data for RTL display",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "events": {
+    "onRowClick": {
+      "description": "Triggered when a table row is clicked"
+    }
+  }
+}
