@@ -209,6 +209,54 @@
             }
         }
 
+        // Method to handle SAP data binding
+        onCustomWidgetResize() {
+            // Handle resize if needed
+        }
+
+        onCustomWidgetBeforeUpdate(oChangedProperties) {
+            // Handle data binding updates
+            if (oChangedProperties["myBinding"]) {
+                this._processSAPData(oChangedProperties["myBinding"]);
+            }
+        }
+
+        _processSAPData(dataBinding) {
+            if (!dataBinding || !dataBinding.data) {
+                return;
+            }
+
+            // Convert SAP data to table format
+            const sapData = dataBinding.data;
+            const processedData = [];
+            
+            // Process each row from SAP
+            sapData.forEach(row => {
+                const rowData = {};
+                
+                // Get dimension values (text columns)
+                if (row.dimensions_0) {
+                    rowData["מחלקה"] = row.dimensions_0.label || row.dimensions_0.id;
+                }
+                if (row.dimensions_1) {
+                    rowData["קטגוריה"] = row.dimensions_1.label || row.dimensions_1.id;
+                }
+                
+                // Get measure values (numeric columns)
+                if (row.measures_0) {
+                    rowData["ערך"] = row.measures_0.raw || row.measures_0.formatted;
+                }
+                if (row.measures_1) {
+                    rowData["כמות"] = row.measures_1.raw || row.measures_1.formatted;
+                }
+                
+                processedData.push(rowData);
+            });
+            
+            this._tableData = processedData;
+            this._render();
+        }
+
         getTableData() {
             return this._tableData;
         }
